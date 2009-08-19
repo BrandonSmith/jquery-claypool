@@ -142,3 +142,46 @@
     });
 })(  jQuery, Claypool, Claypool.Logging );
 
+(function($, $$, $$Log){
+    $$Log.DebugAppender = function(options){
+        if (window&&window.debug){
+            $.extend(true, this, options);
+            this.formatter = new $$Log.FireBugFormatter(options);
+            return this;
+        } else {
+            throw 'debug object is provided by jQuery; load jQuery first';
+        }
+    };
+
+    $.extend($$Log.DebugAppender.prototype,
+        $$Log.Appender$Interface, {
+
+        append: function(level, category, message){
+            if(this.formatter=='undefined') {
+                debug.error.apply(debug,message);
+            } else {
+                switch(level){
+                    case ("DEBUG"):
+                        debug.log.apply(debug, this.formatter.format(level, category, message));
+                        break;
+                    case ("INFO"):
+                        debug.info.apply(debug, this.formatter.format(level, category, message));
+                        break;
+                    case ("WARN"):
+                        debug.warn.apply(debug, this.formatter.format(level, category, message));
+                        break;
+                    case ("ERROR"):
+                        debug.error.apply(debug,this.formatter.format(level, category, message));
+                        break;
+                    case ("EXCEPTION"):
+                        //message is e
+                        debug.error.apply(debug, this.formatter.format(level, category,
+                            message.message?[message.message]:[]));
+                        debug.trace();
+                        break;
+                }
+            }
+        }
+
+    });
+})(jQuery, Claypool, Claypool.Logging);
