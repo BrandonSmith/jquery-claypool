@@ -20,7 +20,7 @@
         this.logger = new $$Log.Logger({
             category:"Claypool.Logging.Factory",
             level:"INFO",
-            appender:"Claypool.Logging.ConsoleAppender"
+            appender:"Claypool.Logging.DebugAppender"
         });
         this.attemptedConfigure = false;
     };

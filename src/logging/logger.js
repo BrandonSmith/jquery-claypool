@@ -78,12 +78,12 @@
             ];
             //allow for appender extension, eg multiple appenders and custom appenders
             //appenders are expected to be specified as string representations of the
-            //function name, eg 'Claypool.Logging.ConsoleAppender'
+            //function name, eg 'Claypool.Logging.DebugAppender'
             try{
-                this.appender = new ($.resolve(this.appender||"Claypool.Logging.ConsoleAppender"))(options);
+                this.appender = new ($.resolve(this.appender||"Claypool.Logging.DebugAppender"))(options);
             }catch(e){
                 try{ 
-                    this.appender = new $$Log.ConsoleAppender(options);
+                    this.appender = new $$Log.DebugAppender(options);
                 }catch(e){ 
                     this.appender = new $$Log.SysOutAppender(options); 
                 }
