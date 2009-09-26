@@ -13,8 +13,8 @@ Claypool.MVC = {
  */
 };
 
-(function($, $Log, $$MVC){
+(function($){
     
     $.manage("Claypool.MVC.Container", "claypool:MVC");
     
-})(  jQuery, Claypool, Claypool.MVC );
+})(  jQuery);

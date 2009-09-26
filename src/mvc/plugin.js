@@ -22,7 +22,14 @@
                 ]);
             });
             return this;
-	    }
+	    },
+        mvc  : function(){
+            if(arguments.length === 0){
+                return $.config('mvc');
+            }else{
+                return $.config('mvc', arguments[0]);
+            }
+        }
 	});
 	/*
      *   -   Model-View-Controller Patterns  -
@@ -72,7 +79,7 @@
         }
     }).router( "hijax:input",{
         selector        : 'input',
-        event           : 'blur',
+        event           : 'blur|focus',
         strategy        : 'all',
         routerKeys      : 'ids',
         hijaxKey        : 'input',
@@ -97,6 +104,16 @@
         eventNamespace  : "Claypool:MVC:HijaxEventController",
         target       : function(event){ 
             return event.type;
+        }
+    }).router( "hijax:image-rollover",{
+        selector        : 'img',
+        event           : 'mouseover|mouseout',
+        strategy        : 'all',
+        routerKeys      : 'urls',
+        hijaxKey        : 'image',
+        eventNamespace  : "Claypool:MVC:HijaxImageRolloverController",
+        target       : function(event){ 
+            return event.target.src;
         }
     });
     
