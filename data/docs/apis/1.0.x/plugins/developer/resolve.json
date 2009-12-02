@@ -1,0 +1,43 @@
+{'_':{
+/**************************************************/
+    'id':'apis/1.0.x/plugins/developer/resolve',
+    'version':'1.0.x',
+    'label':'resolve', 
+    'plugin':'$.resolve',
+    'sections':[{
+/**************************************************/
+        'label':'usage',
+        'description': <>
+        <p>
+            <strong>Resolves a string into object.</strong>
+            This method allows us to reference classes before they are loaded 
+            by simply using the string name in configurations. $.resolve 
+            simply walks down the namespace and returns null if the name 
+            can't be resolved.
+        </p>
+    </>
+ },{
+/**************************************************/
+        'label':'options',
+        'description':<>
+        <p>
+            <table cellspacing="0" class="args"><tbody><tr class="option">
+            <th>id</th><td class="type"><a href="/Types#String">String</a></td>
+            <td class="default"/></tr><tr><td class="desc" colspan="3">
+            A dot-delimited string.</td></tr></tbody></table> 
+        </p>
+    </>
+ },{
+    /**************************************************/
+        'label':'examples',
+        'description':<>
+        <p>
+            Returns the class MyApp.Models.User. if any of the names don't 
+            exist while resolving, it simply returns null.
+        </p>
+        <pre class='box'>$.resolve('MyApp.Models.User');</pre>
+    </> 
+}]
+
+
+}}

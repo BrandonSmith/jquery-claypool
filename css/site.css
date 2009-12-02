@@ -32,8 +32,6 @@ a:hover {
 #main {
     border-top:1px solid #CCC;
     margin-top:-40px; 	
-    padding-left: 3em;
-    padding-right: 2em;
 	margin-bottom:30px;
 }
 
@@ -123,7 +121,6 @@ a:hover {
 }
 #releases p {
     margin:1em;
-    padding:1em;
 }
 #releases ul {
     list-style:none;
@@ -189,7 +186,6 @@ a:hover {
     padding:0.1em;
 }
 #release a{
-    border-bottom:1px dashed;
     text-decoration:none;
 }
 #release h3  a{
@@ -207,20 +203,26 @@ a:hover {
 #docs{
     margin:0 1em 1em 1em;
 }
+#docs h4{
+    color:#C30000;
+}
+#docs h2{
+    margin-bottom:10px;
+}
 
 #docs div{
    margin:1em 0 0 1em;
 }
 #docs p {
-    margin:1em;
-    padding:1em;
+    margin:0.3em;
+    padding:0.2em;
+    font-size:11px;
 }
 #docs ul {
     list-style:none;
     display:inline;
 }
 #docs ul li {
-    margin:1em;
     padding:1px;
 }
 #docs div.first ul li {
@@ -251,7 +253,7 @@ a:hover {
     margin:0 1em 1em 1em;
 }
 #doc div{
-   margin:1em 0 0 1em;
+   margin:3px 0 0 10px;
 }
 #doc strong{
     text-transform:none;
@@ -269,16 +271,19 @@ a:hover {
 	color:#999;
 	padding:5px;
 }
-#doc p {
-    margin:1em;
-    padding:1em;
+#doc h2.api_label{
+    border:none;
+    font-size:2em;
+    color:#000;
+    padding:5px;
+    margin-top:-2em;
 }
-#doc div.first{
-    text-align:left;
+#doc p {
+    margin:5px;
+    padding:5px;
 }
 #doc div.last{
-    padding:1em;
-    text-align:center;
+    padding:0.5em;
 }
 #doc .box{
     padding:10px;
@@ -298,15 +303,36 @@ a:hover {
     text-decoration:none;
 }
 #doc div a{
-    border-bottom:1px dashed;
+    text-decoration:none;
 }
 
-#doc h3  a{
+#doc h3 a{
     border-bottom:none;
     text-decoration:none;
     font-weight:normal;
 }
-
+#doc h4{
+    margin-bottom:2px;
+}
+#doc h4 a{
+    border-bottom:none;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:0.9em;
+    color:#999;
+    margin-bottom:5px;
+}
+#doc h4 a:hover{
+    color:#125B7E;
+}
+#doc ul.subsections{
+    margin-left:30px;
+    font-size:0.9em;
+    margin-bottom:1px;
+}
+#doc tr.option{
+    background-color:#FEE;
+}
 
 
 

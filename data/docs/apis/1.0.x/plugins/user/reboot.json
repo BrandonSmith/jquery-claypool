@@ -1,0 +1,63 @@
+{'_':{
+/**************************************************/
+    'id':'apis/1.0.x/plugins/user/reboot',
+    'version':'1.0.x',
+    'label':'reboot', 
+    'plugin':'$.reboot',
+    'sections':[{
+/**************************************************/
+        'label':'usage',
+        'description': <>
+        <p>
+            <strong>
+            Causes the application to re-read configurations.
+            </strong>
+            This plugin method allows an application to modify it's internal 
+            configuration state and re-read the configuration back so updates 
+            are applied.
+        </p>
+    </>
+ },{
+/**************************************************/
+        'label':'options',
+        'description':<>
+        <p>
+            <table>
+                <tbody>
+                    <tr class="option">
+                        <th>callback</th>
+                        <td class="type">
+                            <a href="/Types#Function">Function</a>
+                        </td>
+                        <td class="default"/>
+                    </tr>
+                    <tr>
+                        <td class="desc" colspan="3">
+                            The callback is applied just after the event 
+                            <b>ApplicationReinitialized</b>
+                        </td>
+                   </tr>
+               </tbody>
+           </table>
+        </p>
+    </>
+ },{
+    /**************************************************/
+        'label':'examples',
+        'description':<>
+        <p>
+            Reloads all configuration state
+        </p>
+<pre class='box'>$.reboot();</pre>
+        <p>
+            Adding a post-boot callback
+
+        </p>
+        <pre class='box'>$.reboot(function(){
+            //do something
+        });</pre>
+    </> 
+}]
+
+
+}}

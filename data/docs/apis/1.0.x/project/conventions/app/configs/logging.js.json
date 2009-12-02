@@ -1,0 +1,104 @@
+{'_':{
+/**************************************************/
+    'id':'apis/1.0.x/project/conventions/app/configs/logging',
+    'version':'1.0.x',
+    'label':'app/configs/logging.js',
+    'sections':[{
+/**************************************************/
+        'label':'usage',
+        'description': <>
+        <p>
+            <strong>app/configs/logging.js</strong> is the primary channel into 
+            jquery.claypool.js as a debugging tool for your application.
+        </p>
+        <p>
+            Claypool acknowledges that the diverse runtime environments an 
+            application must run in are difficult to quickly and easily peer 
+            into as the application flows through complex channels. Category 
+            logging is much faster and much more environment agnostic when 
+            monitoring your application for bugs.
+        </p>
+        <p>
+            Logging in jquery.claypool is the most efficient implementation 
+            possible. When logging is turned up, you will notice a performace 
+            hit, but when its disabled there is almost zero impact on 
+            performace allowing you to leave logging in place for the entire 
+            life cycle of the application.
+        </p>
+    </>
+ },{
+/**************************************************/
+        'label':'options',
+        'description':<>
+        <p>
+            There are three primary options available for this plugin,
+            though generally only two are used.level, along with category 
+            is the minimum required 
+            information you need to turn on/off, up/down loggers so 
+            you can quickly and easily debug you application without 
+            the performance hit when you don't need it.
+            <ol>
+                <li> 
+                    <a href='../../../../plugins/user/logging#category'> 
+                        category
+                    </a><br/>
+                    A dot delimited string name.  Categories are hierarchical
+                    when not configured.  So if the logger A.B.C is not configured
+                    specifically, it will look in order for A.B, A, then finally root
+                    to detemine it's configuration.
+                </li> 
+                <li> 
+                    <a href='../../../../plugins/user/logging#level'> 
+                        level
+                    </a><br/>
+                    Level is either DEBUG, INFO, WARN, ERROR, or NONE.
+                </li> 
+                <li> 
+                    <a href='../../../../plugins/user/logging#appender'> 
+                        appender
+                    </a><br/>
+                    the appender pattern allows you log in a browser or in 
+                    Rhino, or over the network, or to a cookie, etc. By default 
+                    the logging appenders will detect with you are in a browser 
+                    or in Rhino and append messages appropriately. 
+                </li>
+            </ol>
+            The links above are given in order of general use. Most apps can get 
+            started with only a simple level configuration, eventually they 
+            might need to write log messages to cookies or a server so the 
+            appender pattern provides . Finally you may find you need a very 
+            special case where information is serialized in a special way so 
+            you'll want to create some custom formatter logic. 
+        </p>
+    </>
+ },{
+    /**************************************************/
+        'label':'examples',
+        'description':<>
+        <p>
+            Usually all logging configuration is isolated in the single location
+            at <strong>configs/logging.js</strong> and has it's own closure.  
+            Here is an example that can help get you started, just replace 'Example'
+            with your applications own top level object literal. 
+        </p>
+<pre class='box'>
+
+(function($)&amp;#x7B; 
+    
+   $.logging([
+        &amp;#x7B; category:"Example",               level:"INFO"  &#x7D;,
+        &amp;#x7B; category:"Example.Models",        level:"DEBUG" &#x7D;,
+        &amp;#x7B; category:"Example.Views",         level:"DEBUG" &#x7D;,
+        &amp;#x7B; category:"Example.Controllers",   level:"DEBUG" &#x7D;,
+        &amp;#x7B; category:"Claypool",              level:"INFO"  &#x7D;,
+        &amp;#x7B; category:"root",                  level:"WARN"  &#x7D;
+    ]);     
+    
+&#x7D;)(jQuery);
+
+</pre>
+    </> 
+}]
+
+
+}}

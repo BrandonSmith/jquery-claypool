@@ -9,12 +9,12 @@ jQuery.noConflict();
 (function($){
     
     //A static logger for any initialization routines we might add here
-    var log = $.logger("Example");
+    var log = $.logger("Site");
     
     //The environments are described in environments.js
     try{
-       $.env('defaults', "dev.server");
- 	   //$.env('defaults', "appengine.server");
+       //$.env('defaults', "dev.server");
+ 	   $.env('defaults', "appengine.server");
        
  	}catch(e){
  	   log.error("Environmental selection is invalid!").exception(e);

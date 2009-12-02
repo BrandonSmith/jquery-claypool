@@ -1,0 +1,147 @@
+{'_':{
+/**************************************************/
+    'id':'apis/1.0.x/project/conventions/app/configs/filters.js',
+    'version':'1.0.x',
+    'label':'app/configs/filters',
+    'sections':[{
+/**************************************************/
+        'label':'usage',
+        'description': <>
+        <p>
+            <strong>app/configs/filters.js</strong> allows you to do just that, 
+            filter.
+        </p>
+        <p>
+            Filtering allows you to add orthogonal functionality to your 
+            application. Filters are sometimes better known as Aspects, or AOP.
+        </p>
+        <p>
+            Imagine writing a web application where you want to drive it with 
+            ajax, then your boss says 'It has to work offline'. Do you go back 
+            and write code everywhere you do ajax calls to test if the network 
+            is available and write more code to use offline storage instead?
+        </p>
+        <p>
+            A better solution is to create a simple filter that intercepts 
+            the calls to $.ajax and detects network status, rerouting to the 
+            appropriate controller. The usual code base can stay clean and clear.
+        </p>
+    </>
+ },{
+/**************************************************/
+        'label':'options',
+        'description':<>
+        <p>
+            There are three primary patterns available through this plugin.
+            <ol>
+                <li>
+                    <a href='../../../../plugins/user/filters#around'>
+                        around
+                    </a><br/>
+                    around is the most powerful filter. It allows you to intercept 
+                    calls, examine the arguments, and determine whether to proceed 
+                    or call some other code.
+                </li> 
+                <li>
+                    <a href='../../../../plugins/user/filters#before'>
+                        before
+                    </a><br/>
+                    the before pattern allows you to examine the arguments of 
+                    the intercepted call and modify the arguments. You cant 
+                    interupt the usual flow, but you can add to it by calling 
+                    additional code before the intercepted call, or by modifying 
+                    the arguments that will be passed on to the intercepted call. 
+                </li> 
+                <li>
+                    <a href='../../../../plugins/user/filters#after'>
+                        after
+                    </a><br/>
+                    the after filter allows you to examine the return value of 
+                    the intercepted call, modify it, and return a new value. 
+                    Like before you can't interrupt the call flow but you can 
+                    add modify the return value using additional application 
+                    logic based on the intercepted return value. 
+                </li>
+            </ol>
+            Your application will not usually start with filters, but they become 
+            readily used by knowledgable developers that understand the subtle 
+            power of this pattern to keep an app clean and clear while stacking 
+            functionality in an intuitively seperate way. 
+        </p>
+    </>
+ },{
+    /**************************************************/
+        'label':'examples',
+        'description':<>
+        <p>
+           This example is used heavily in server-side jquery-claypool.  It allows
+           us to do two things...
+        </p>
+        <p>
+            First, it allows us to intercept all calls to render our page 
+            templates, and determine if a format parameter was passed.  If the
+            format parameter was present we are able to prevent the template
+            from being rendered and simply serialize the model as json!
+        </p> 
+        <p>
+            Second, it also let us add a standard set of state data to the
+            request scope on the model m(), which in this case is the http 
+            request parameters, request headers, and currently defined response 
+            headers.
+        </p> 
+        <p>
+            Every page of this application uses these filters! 
+            Go ahead and try it!...<a href='?fo=json'>?fo=json</a>
+        </p>
+<pre class='box'>
+
+(function($, _)&amp;#x7B;
+
+    var log;
+    
+    
+    $.filters([
+        &amp;#x7B;
+            id        : "#contentNegotiationFilter",
+            target    : "Site.Views.*",
+            around    : "(render)",
+            advice    : function(invocation)&amp;#x7B;
+                log = log||$.logger('Site.Filters.ContentNegotiation');
+                log.debug('Intercepted call to render');
+                var model = invocation.arguments[0],
+                    view = invocation.object;
+                if(model.parameters &amp;&amp; model.parameters.fo == 'json')&amp;#x7B;
+                    view.write(_.json(model, null, '\t'));
+                    //do not proceed
+                &#x7D;else if(model.parameters &amp;&amp; model.parameters.fo == 'xml')&amp;#x7B;
+                    view.write(_.x(&amp;#x7B;x:model&#x7D;));
+                    //do not proceed
+                &#x7D;else&amp;#x7B;
+                    invocation.proceed();
+                &#x7D;
+            &#x7D;
+        &#x7D;,
+        &amp;#x7B;
+            id        : "#requestResponseParamFilter",
+            target    : "Site.Services.*",
+            before    : "(handleGet|handlePost|handleDelete|handlePut)",
+            advice    : function(request, response)&amp;#x7B;
+                log = log||$.logger('Site.Filters.ContentNegotiation');
+                log.debug('Intercepted call to handleHTTPMethod');
+                response.m(&amp;#x7B;
+                    parameters:request.parameters,
+                    requestHeaders:request.headers,
+                    responseHeaders: response.headers
+                &#x7D;);
+            &#x7D;
+        &#x7D;
+    ]);
+
+&#x7D;)(jQuery, jsPath);
+    
+</pre>
+    </> 
+}]
+
+
+}}

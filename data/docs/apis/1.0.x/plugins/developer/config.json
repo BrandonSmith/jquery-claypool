@@ -1,0 +1,89 @@
+{'_':{
+/**************************************************/
+    'id':'apis/1.0.x/plugins/developer/config',
+    'version':'1.0.x',
+    'location':['app/configs/config.js'],
+    'label':'config', 
+    'plugin':'$.config',
+    'sections':[{
+/**************************************************/
+        'label':'usage',
+        'description': <>
+        <p>
+            <strong>
+                Retrieves or extends the entire configuration, 
+                or a subset of the configuration.
+            </strong>
+            This method is an entry point into jquery.claypool's internal 
+            configuration for application components. All of claypools 
+            submodules, like logging, mvc, ioc, and aop can be accessed 
+            directly through $.config. Each configuration is also exposed by
+            a conveneince method. See also:
+            <ul>
+                <li><a href='../user/scan'>$.scan</a></li>
+                <li><a href='../user/invert'>$.invert</a></li>
+                <li><a href='../user/logging'>$.logging</a></li>
+                <li><a href='../user/routes'>$.routes</a></li>
+                <li><a href='../user/environments'>$.env</a></li>
+                <li><a href='../user/filters'>$.filters</a></li>
+                <li><a href='../user/proxy'>$.proxy</a></li>
+            </ul>
+        </p>
+    </>
+ },{
+/**************************************************/
+        'label':'options',
+        'description':<>
+        <p>
+            <table cellspacing="0" class="args">
+                <tbody>
+                    <tr class="option">
+                        <th>id<span class="optional"> (Optional)</span></th>
+                        <td class="type">String</td>
+                        <td class="default"/>
+                    </tr>
+                    <tr>
+                        <td class="desc" colspan="3">
+                        The id of the configuration subset.   
+                        If the argument is present, it should be a dot-delimited 
+                        string, it will be resolved, and return that subset of 
+                        the configuration.
+                        </td>
+                    </tr>
+                    <tr class="option">
+                        <th>obj<span class="optional"> (Optional)</span></th>
+                        <td class="type">Object</td>
+                        <td class="default"/>
+                    </tr>
+                    <tr>
+                        <td class="desc" colspan="3">
+                        The object that will be saved in application scope with 
+                        the given id.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+    </>
+ },{
+    /**************************************************/
+        'label':'examples',
+        'description':<>
+        <p>
+            If no arg is present the entire application object is returned.
+        </p>
+        <pre class='box'>$.config();</pre>
+        <p>
+            If a single arg is present the string is configuration subset is returned.
+        </p>
+        <pre class='box'>$.config('mvc');</pre>
+        <p>
+            The configuration subset identified by the first arg is deeply 
+            extended or merged if the second arg is a object or array (respectively). Chainable.
+        </p>
+        <pre class='box'>$.config('mvc', /*Object or Array*/);</pre>
+    </> 
+}]
+
+
+}}

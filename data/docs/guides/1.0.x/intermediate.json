@@ -1,0 +1,46 @@
+{'_':{
+
+    /**************************************************\
+     * Getting Rolling *
+    \**************************************************/
+    
+    'id':'intermediate',
+    'version':'1.0.x',
+    'label':'Getting Comfortable',
+    'sections':[{
+    
+        'name':'coming soon',
+        'subsections':[{  
+
+            'name':'abc123',
+            'description':<>
+                <p>
+                    {_.paragraph()} 
+                    <pre class='box'>
+                    <code>.
+                {_.words(2, false)}
+                    </code>
+                    </pre>
+                    {_.sentence()} 
+                </p>
+            </>
+        
+            },{
+    
+            'name':'abc123',
+            'description':<>
+                <p>
+                    {_.paragraph()} 
+                    <pre class='box'>
+                    <code>.
+                {_.words(2, false)}
+                    </code>
+                    </pre>
+                    {_.sentence()} 
+                </p>
+            </>
+        }]
+
+    }]//end sections
+
+}}

@@ -1,0 +1,40 @@
+{'_':{
+/**************************************************/
+    'id':'apis/1.0.x/plugins/developer/guid',
+    'version':'1.0.x',
+    'label':'guid', 
+    'plugin':'$.guid',
+    'sections':[{
+/**************************************************/
+        'label':'usage',
+        'description': <>
+        <p>
+           <strong>
+           Creates a globally unique identifier
+           </strong>
+            The guid plugin function is a static function on the jQuery namespace 
+            that provides an effectively unique identifier across time-space. 
+            It is similar to the jQuery expando but attempts to be unique across 
+            browser instances without a server session id.
+
+        </p>
+    </>
+ },{
+/**************************************************/
+        'label':'options',
+        'description':<>
+        <p>
+        No options
+        </p>
+    </>
+ },{
+    /**************************************************/
+        'label':'examples',
+        'description':<>
+        <p>Creates a permutationally globally unique string.</p>
+        <pre class='box'>$.guid();</pre>
+    </> 
+}]
+
+
+}}

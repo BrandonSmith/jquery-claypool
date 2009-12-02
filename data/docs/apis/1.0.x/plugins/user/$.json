@@ -1,0 +1,78 @@
+{'_':{
+/**************************************************/
+    'id':'apis/1.0.x/plugins/user/$',
+    'version':'1.0.x',
+    'label':'$', 
+    'plugin':'$.$',
+    'sections':[{
+/**************************************************/
+        'label':'usage',
+        'description': <>
+        <p>
+            <strong>
+                Retrieves or sets an object saved in application context
+            </strong>
+            A concise method of loading application 
+            managed components, or saving them.  If the application managed
+            instance has not been created, the managing container will create it
+            for you.
+        </p>
+    </>
+ },{
+/**************************************************/
+        'label':'options',
+        'description':<>
+        <table cellspacing="0" class="args">
+            <tbody>
+                <tr class="option">
+                    <th>id</th>
+                    <td class="type">
+                        String
+                    </td>
+                    <td class="default"/>
+                </tr>
+                <tr>
+                    <td class="desc" colspan="3">
+                        The unique application scope id of the object to 
+                        retrieve or set.
+                    </td>
+                </tr>
+                <tr class="option">
+                    <th>
+                        obj<span class="optional">(Optional)</span>
+                    </th>
+                    <td class="type">
+                        Object
+                    </td>
+                    <td class="default"/>
+                </tr>
+                <tr>
+                    <td class="desc" colspan="3">
+                        The object that will be saved in application scope 
+                        with the given id.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </>
+ },{
+    /**************************************************/
+        'label':'examples',
+        'description':<>
+        <p>
+            <strong>
+                Retrieves object with id #appId from the application context.
+            </strong>
+        </p>    
+<pre class='box'>$.$("#myWidget");</pre>
+        <p>
+            <strong>
+                Set object with id #appId from the application context.
+            </strong>
+        </p>
+<pre class='box'>$.$("#myWidget", myWidget);</pre>
+    </> 
+}]
+
+
+}}

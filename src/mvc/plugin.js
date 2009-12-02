@@ -10,6 +10,7 @@
 	/**
 	 * @constructor
 	 */
+    var log;
     //TODO : what is the useful static plugin that could be derived from Claypool.MVC?
     //      router ?
 	$.extend($, {
@@ -17,6 +18,8 @@
         //For another example see claypool server
 	    router : function(confId, options){
             $(document).bind("claypool:hijax", function(event, _this, registrationFunction, configuration){
+                log = log||$.logger('Claypool.MVC.Plugins');
+                log.debug('registering router plugin: %s', confId);
                 registrationFunction.apply(_this, [
                     configuration, confId, "Claypool.MVC.HijaxController", options
                 ]);
@@ -24,13 +27,27 @@
             return this;
 	    },
         mvc  : function(){
+            var prop, config;
             if(arguments.length === 0){
                 return $.config('mvc');
             }else{
-                return $.config('mvc', arguments[0]);
+                config = $.config('mvc');
+                //because mvc routes are named arrays, the relavant
+                //array is not merged.  we force the arrays to be merged
+                //if the property already exists
+                for(prop in arguments[0]){
+                    if(prop in config){
+                        $.merge(config[prop], arguments[0][prop]);
+                    }else{
+                        config[prop] = arguments[0][prop];
+                    }
+                }
+                return this;//chain
             }
         }
 	});
+    
+    $.routes = $.mvc;
 	/*
      *   -   Model-View-Controller Patterns  -
      *
@@ -104,16 +121,6 @@
         eventNamespace  : "Claypool:MVC:HijaxEventController",
         target       : function(event){ 
             return event.type;
-        }
-    }).router( "hijax:image-rollover",{
-        selector        : 'img',
-        event           : 'mouseover|mouseout',
-        strategy        : 'all',
-        routerKeys      : 'urls',
-        hijaxKey        : 'image',
-        eventNamespace  : "Claypool:MVC:HijaxImageRolloverController",
-        target       : function(event){ 
-            return event.target.src;
         }
     });
     

@@ -27,12 +27,17 @@
          * @type String
          */
         updateConfig: function(){
-            var mvcConfig;
+            var mvcConfig,
+                controller,
+                type,
+                id,
+                i;
             try{
                 this.logger.debug("Configuring Claypool MVC Controller Factory");
                 mvcConfig = this.getConfig()||{};//returns mvc specific configs
                 //Extension point for custom low-level hijax controllers
                 $(document).trigger("claypool:hijax", [this, this.initializeHijaxController, mvcConfig]);
+                
             }catch(e){
                 this.logger.exception(e);
                 throw new $$MVC.ConfigurationError(e);
@@ -104,8 +109,8 @@
          * @type String
          */
         initializeHijaxController: function(mvcConfig, key, clazz, options){
-            var configuration;
-            var i;
+            var configuration,
+                i;
             if(mvcConfig[key]){
                 for(i=0;i<mvcConfig[key].length;i++){
                     configuration = {};
